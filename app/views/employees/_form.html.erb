@@ -1,0 +1,31 @@
+<div class="container">
+ <div class="form-pink-bg">
+    <div class="row">
+     <div class="col-sm-12">
+      <%= simple_form_for(@employee) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+         <% if @kid.errors.any? %>
+           <div class="errors-container">
+             <ul>
+               <% @kid.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+               <% end %>
+             </ul>
+           </div>
+          <% end %>
+          <div class="form-inputs">
+           <%= f.input :name %>
+           <%= f.input :department %>
+
+          </div>
+           <div class="form-actions">
+             <%= f.submit 'ADD EMPLOYEE', class: "btn btn-white w-100 font-weight-bold" %>
+           </div>
+          <% end %>
+        </div>
+     </div>
+  </div>
+ </div>
+
+
